@@ -7,7 +7,9 @@
                 <h2>CRUD Application</h2>
             </div>
             <div class="pull-right">
+                @can('isAdmin')
                 <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                @endcan
             </div>
         </div>
     </div>
@@ -34,13 +36,19 @@
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
    
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
-    
+                    
+                    @can('isUser')
+                    <a class="btn btn-primary" href="{{ route('orders.create',['product_id'=>$product->id])}}">Make Order</a>
+                    @endcan
+
+                    @can('isAdmin')
                     <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
       
                     <button type="submit" class="btn btn-danger">Delete</button>
+                    @endcan
                 </form>
             </td>
         </tr>

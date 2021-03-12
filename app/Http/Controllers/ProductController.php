@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
   
 class ProductController extends Controller
 {
+    public function _construct()
+    {
+        # code...
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -103,5 +109,11 @@ class ProductController extends Controller
     
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
+    }
+
+    public function products()
+    {
+        # code...
+        return view('products');
     }
 }

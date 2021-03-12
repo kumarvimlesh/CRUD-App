@@ -64,8 +64,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
-                                    <a class="dropdown-item" href="{{ route('dashboard.index') }}">
+                                    <a class="dropdown-item" href="{{route('dashboard.index') }}">
                                         Dashboard
                                     </a>
 
